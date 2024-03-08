@@ -1,4 +1,4 @@
-const keyNames = ["d", "r", "f", "t", "g"];
+const storageDOM = [];
 
 class Piano {
     constructor(keys) {
@@ -12,8 +12,13 @@ class Piano {
         const key = document.createElement("div");
         key.innerText = name;
         key.className = cls;
+        key.classList.add("key");
         key.id = id;
+        storageDOM.push(key);
         parent.append(key);
+
+        this.handleKeyPress(name, key);
+        this.handleKeyRelease(name, key);
     }
 
     createBoard(totalKeys = this.keys.length) {
@@ -37,7 +42,26 @@ class Piano {
             }
         }
     }
+
+    handleKeyPress(char, key) {
+        document.addEventListener("keydown", (event) => {
+            if (event.key.toLowerCase() === char.toLowerCase()) {
+                key.classList.add("pressed");
+            }
+        });
+    }
+
+    handleKeyRelease(char, key) {
+        document.addEventListener("keyup", (event) => {
+            if (event.key.toLowerCase() === char.toLowerCase()) {
+                key.classList.remove("pressed");
+            }
+        });
+    }
 }
 
+const keyNames = ["d", "r", "f", "t", "g"];
 const myPiano = new Piano(keyNames);
 myPiano.createBoard();
+
+console.log(storageDOM);
