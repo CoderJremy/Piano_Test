@@ -23,21 +23,42 @@ class Piano {
 
     createBoard(totalKeys = this.keys.length) {
         for (let i = 0; i < totalKeys; i++) {
-            switch (this.keys[i]) {
+            switch (this.keys[i].name) {
                 case "d":
-                    this.createKey(this.keys[i], this.whiteKeysDisplay, "white", "c");
+                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "c");
                     break;
                 case "r":
-                    this.createKey(this.keys[i], this.blackKeysDisplay, "black", "cs");
+                    this.createKey(this.keys[i].name, this.blackKeysDisplay, "black", "cs");
                     break;
                 case "f":
-                    this.createKey(this.keys[i], this.whiteKeysDisplay, "white", "d");
+                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "d");
                     break;
                 case "t":
-                    this.createKey(this.keys[i], this.blackKeysDisplay, "black", "ef");
+                    this.createKey(this.keys[i].name, this.blackKeysDisplay, "black", "ef");
                     break;
                 case "g":
-                    this.createKey(this.keys[i], this.whiteKeysDisplay, "white", "e");
+                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "e");
+                    break;
+                case "h":
+                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "f");
+                    break;
+                case "u":
+                    this.createKey(this.keys[i].name, this.blackKeysDisplay, "black", "fs");
+                    break;
+                case "j":
+                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "g");
+                    break;
+                case "i":
+                    this.createKey(this.keys[i].name, this.blackKeysDisplay, "black", "af");
+                    break;
+                case "k":
+                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "a");
+                    break;
+                case "o":
+                    this.createKey(this.keys[i].name, this.blackKeysDisplay, "black", "bf");
+                    break;
+                case "l":
+                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "b");
                     break;
             }
         }
@@ -60,8 +81,58 @@ class Piano {
     }
 }
 
-const keyNames = ["d", "r", "f", "t", "g"];
-const myPiano = new Piano(keyNames);
+const keysInfo = [
+    {
+        name: "d",
+        sound: "",
+    },
+    {
+        name: "r",
+        sound: "",
+    },
+    {
+        name: "f",
+        sound: "",
+    },
+    {
+        name: "t",
+        sound: "",
+    },
+    {
+        name: "g",
+        sound: "",
+    },
+    {
+        name: "h",
+        sound: "",
+    },
+    {
+        name: "u",
+        sound: "",
+    },
+    {
+        name: "j",
+        sound: "",
+    },
+    {
+        name: "i",
+        sound: "",
+    },
+    {
+        name: "k",
+        sound: "",
+    },
+    {
+        name: "o",
+        sound: "",
+    },
+    {
+        name: "l",
+        sound: "",
+    },
+];
+
+const myPiano = new Piano(keysInfo);
 myPiano.createBoard();
 
 console.log(storageDOM);
