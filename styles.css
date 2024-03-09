@@ -57,6 +57,10 @@ body {
     border-right: 3px solid #3c4155;
 }
 
+.pressed {
+    background: #587af4;
+}
+
 #cs {
     position: relative;
     left: 34px;
@@ -67,6 +71,17 @@ body {
     left: 60px;
 }
 
-.pressed {
-    background: #587af4;
+#fs {
+    position: relative;
+    left: 130px;
+}
+
+#af {
+    position: relative;
+    left: 153px;
+}
+
+#bf {
+    position: relative;
+    left: 175px;
 }
