@@ -8,7 +8,7 @@ class Piano {
         this.blackKeysDisplay = document.querySelector(".black-keys");
     }
 
-    createKey(name, parent, cls, id) {
+    createKey(name, sound, parent, cls, id) {
         const key = document.createElement("div");
         key.innerText = name;
         key.className = cls;
@@ -17,7 +17,7 @@ class Piano {
         storageDOM.push(key);
         parent.append(key);
 
-        this.handleKeyPress(name, key);
+        this.handleKeyPress(name, key, sound);
         this.handleKeyRelease(name, key);
     }
 
@@ -25,49 +25,123 @@ class Piano {
         for (let i = 0; i < totalKeys; i++) {
             switch (this.keys[i].name) {
                 case "d":
-                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "c");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.whiteKeysDisplay,
+                        "white",
+                        "c"
+                    );
                     break;
                 case "r":
-                    this.createKey(this.keys[i].name, this.blackKeysDisplay, "black", "cs");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.blackKeysDisplay,
+                        "black",
+                        "cs"
+                    );
                     break;
                 case "f":
-                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "d");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.whiteKeysDisplay,
+                        "white",
+                        "d"
+                    );
                     break;
                 case "t":
-                    this.createKey(this.keys[i].name, this.blackKeysDisplay, "black", "ef");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.blackKeysDisplay,
+                        "black",
+                        "ef"
+                    );
                     break;
                 case "g":
-                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "e");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.whiteKeysDisplay,
+                        "white",
+                        "e"
+                    );
                     break;
                 case "h":
-                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "f");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.whiteKeysDisplay,
+                        "white",
+                        "f"
+                    );
                     break;
                 case "u":
-                    this.createKey(this.keys[i].name, this.blackKeysDisplay, "black", "fs");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.blackKeysDisplay,
+                        "black",
+                        "fs"
+                    );
                     break;
                 case "j":
-                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "g");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.whiteKeysDisplay,
+                        "white",
+                        "g"
+                    );
                     break;
                 case "i":
-                    this.createKey(this.keys[i].name, this.blackKeysDisplay, "black", "af");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.blackKeysDisplay,
+                        "black",
+                        "af"
+                    );
                     break;
                 case "k":
-                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "a");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.whiteKeysDisplay,
+                        "white",
+                        "a"
+                    );
                     break;
                 case "o":
-                    this.createKey(this.keys[i].name, this.blackKeysDisplay, "black", "bf");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.blackKeysDisplay,
+                        "black",
+                        "bf"
+                    );
                     break;
                 case "l":
-                    this.createKey(this.keys[i].name, this.whiteKeysDisplay, "white", "b");
+                    this.createKey(
+                        this.keys[i].name,
+                        this.keys[i].soundPath,
+                        this.whiteKeysDisplay,
+                        "white",
+                        "b"
+                    );
                     break;
             }
         }
     }
 
-    handleKeyPress(char, key) {
+    handleKeyPress(char, key, key2Play) {
         document.addEventListener("keydown", (event) => {
             if (event.key.toLowerCase() === char.toLowerCase()) {
                 key.classList.add("pressed");
+                const keySound = new Audio(key2Play);
+                keySound.play();
             }
         });
     }
@@ -84,51 +158,51 @@ class Piano {
 const keysInfo = [
     {
         name: "d",
-        sound: "",
+        soundPath: "./sounds/C4.mp3",
     },
     {
         name: "r",
-        sound: "",
+        soundPath: "./sounds/Db4.mp3",
     },
     {
         name: "f",
-        sound: "",
+        soundPath: "./sounds/D4.mp3",
     },
     {
         name: "t",
-        sound: "",
+        soundPath: "./sounds/Eb4.mp3",
     },
     {
         name: "g",
-        sound: "",
+        soundPath: "./sounds/E4.mp3",
     },
     {
         name: "h",
-        sound: "",
+        soundPath: "./sounds/F4.mp3",
     },
     {
         name: "u",
-        sound: "",
+        soundPath: "./sounds/Gb4.mp3",
     },
     {
         name: "j",
-        sound: "",
+        soundPath: "./sounds/G4.mp3",
     },
     {
         name: "i",
-        sound: "",
+        soundPath: "./sounds/Ab4.mp3",
     },
     {
         name: "k",
-        sound: "",
+        soundPath: "./sounds/A4.mp3",
     },
     {
         name: "o",
-        sound: "",
+        soundPath: "./sounds/Bb4.mp3",
     },
     {
         name: "l",
-        sound: "",
+        soundPath: "./sounds/B4.mp3",
     },
 ];
 
